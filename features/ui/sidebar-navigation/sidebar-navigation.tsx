@@ -7,6 +7,7 @@ import { MenuItemButton } from "./menu-item-button";
 import { MenuItemLink } from "./menu-item-link";
 import { Button } from "@features/ui";
 import { breakpoint, color, space, zIndex } from "@styles/theme";
+import Image from "next/image";
 
 const menuItems = [
   { text: "Projects", iconSrc: "/icons/projects.svg", href: Routes.projects },
@@ -68,8 +69,12 @@ const Header = styled.header`
   }
 `;
 
-const Logo = styled.img`
+const Logo = styled.picture`
   width: 7.375rem;
+
+  img {
+    width: auto;
+  }
 
   @media (min-width: ${breakpoint("desktop")}) {
     margin: ${space(0, 4)};
@@ -163,14 +168,15 @@ export function SidebarNavigation() {
     <Container isCollapsed={isSidebarCollapsed}>
       <FixedContainer>
         <Header>
-          <Logo
-            src={
-              isSidebarCollapsed
-                ? "/icons/logo-small.svg"
-                : "/icons/logo-large.svg"
-            }
-            alt="logo"
-          />
+          <Logo>
+            <source srcSet="/icons/logo-small.svg" media={`(min-width: 64em`} />
+            <Image
+              src="/icons/logo-large.svg"
+              alt="logo"
+              width={`118`}
+              height={`33`}
+            />
+          </Logo>
           <MenuButton onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
             <MenuIcon
               src={isMobileMenuOpen ? "/icons/close.svg" : "/icons/menu.svg"}
