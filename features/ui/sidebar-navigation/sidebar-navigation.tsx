@@ -162,7 +162,8 @@ const CollapseMenuItem = styled(MenuItemButton)`
 
 export function SidebarNavigation() {
   const router = useRouter();
-  const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
+  const { isSidebarCollapsed, toggleSidebar, triggerEmailClient } =
+    useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <Container isCollapsed={isSidebarCollapsed}>
@@ -202,7 +203,7 @@ export function SidebarNavigation() {
               text="Support"
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
-              onClick={() => alert("Support")}
+              onClick={() => triggerEmailClient()}
             />
             <CollapseMenuItem
               text="Collapse"
