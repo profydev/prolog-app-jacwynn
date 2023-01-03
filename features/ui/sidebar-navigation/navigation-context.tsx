@@ -8,6 +8,7 @@ const defaultContext = {
   isSidebarCollapsed: false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleSidebar: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
 };
 
 export const NavigationContext = React.createContext(defaultContext);
