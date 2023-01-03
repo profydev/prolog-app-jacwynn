@@ -9,7 +9,6 @@ const defaultContext = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleSidebar: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  triggerEmailClient: () => {},
 };
 
 export const NavigationContext = React.createContext(defaultContext);
@@ -26,10 +25,6 @@ export function NavigationProvider({
       value={{
         isSidebarCollapsed,
         toggleSidebar: () => setSidebarCollapsed((isCollapsed) => !isCollapsed),
-        triggerEmailClient: () => {
-          location.href =
-            "mailto:support@prolog-app.com?subject=Subject Request:";
-        },
       }}
     >
       {children}
